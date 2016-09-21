@@ -43,4 +43,4 @@ and you can also change the security question if you would like. However, you MU
 
 -Josh Engelhardt, Ames Maverick
 
-This was created by Nick Wilson with Chris Daly, Stefan Kraus, and myself as contributors.
+This was created by Nick Wilson with Chris Daly, Stefan Kraus, Scott Mueller and myself as contributors.
