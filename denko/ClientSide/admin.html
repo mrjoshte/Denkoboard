@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app="denkoAdminApp">
+<head lang="en">
+    <!-- Metadata stuff -->
+    <meta charset="UTF-8">
+    <title>Denko-Board Admin Page</title>
+    <link rel="icon" type="image/png" href="Images/Favicons/favicon.ico">
+    <!-- Style stuff -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="denkoAdminStyle.css">
+    <!-- Script stuff -->
+    <script src="angular.js"></script>
+    <script src="denkoAdminApp.js"></script>
+    <script src="./socket.io/socket.io.js"></script>
+    <script>
+        var socket = io.connect(window.location.origin);
+    </script>
+</head>
+<body class="container-fluid" ng-controller="admin">
+    <header class="navbar navbar-fixed-top">
+        <h1><img id="headerImage" src="Images/Favicons/ms-icon-310x310.png" height="75">Denko-Board Admin Page <small><a href="/">Denko-Board</a></small></h1>
+    </header>
+    <ng-include src="template"></ng-include>
+</body>
+</html>

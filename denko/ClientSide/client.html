@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html ng-app="denkoApp" style="height: 100%">
+<head lang="en">
+    <!-- Metadata stuff -->
+    <meta charset="UTF-8">
+    <title>Denko-Board</title>
+    <link rel="icon" type="image/png" href="Images/Favicons/favicon.ico">
+    <!-- Style stuff -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="denkoStyle.css">
+    <!-- Script stuff -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="gistfile1.js"></script>
+    <script src="angular.js"></script>
+    <script src="denkoApp.js"></script>
+    <script src="./socket.io/socket.io.js"></script>
+    <script>
+        var socket = io.connect(window.location.origin);
+    </script>
+</head>
+<body class="container-fluid" style="height: 100%">
+	<div id="top banner" style="height: 10%">
+		<section class='title  col-lg-4' ng-click="test()" id="title" ng-init="tick()" ng-controller='titleController'>
+			<img src="Images/Favicons/MSC_logo_horizontal.png">
+		</section>
+		<section id="bannerSection" class="panel" ng-controller="infoController">
+			<h1 id="Banner">{{banner[index].value}}</h1>
+		</section>
+		<section id="time" class="panel" ng-Controller="titleController">
+			<h1 ng-init="tick()">{{clock | date:'MMM dd h:mm:ss'}}</h1>
+		</section>
+	</div>
+	<!--col-lg-pull-4 -->
+	<section id="info"  class="col-xs-12 col-md-6 col-lg-4  ng-scope" ng-controller="infoController">
+        <section class='inner' id="announcements">
+		<h1 style="text-align:center">Announcements</h1>
+            <!--<ul>
+                <li ng-repeat="announcement in announcements">-->
+				<div ng-repeat="announcement in announcements">
+                    <h2 style="text-align:center">{{announcement.title}}</h3>
+                    <p style="text-align:center" class='text-smaller'>{{announcement.value}}</p>
+				</div>
+                <!--</li>
+            </ul>-->
+        </section>
+        <section class='inner' id="contactInformation">
+            <h2 style="text-align:center">Contact Information</h2>
+            <!--<ul>
+                <li style="text-align:center" ng-repeat="contact in contacts">-->
+				<div style="text-align:center" ng-repeat="contact in contacts">
+                    <span class='text-smaller'>{{contact.title}}</span>
+                    <span class='text-smaller'>{{contact.value}}</span>
+				</div>
+                <!--</li>
+            </ul>-->
+        </section>
+    </section>
+	<!--col-lg-push-4-->
+    <section id="media" class="col-xs-12 col-md-6 col-lg-4 panel">
+		<section class='inner' id="musicList"  ng-controller="musicController">
+		<h1 style="text-align:center">Music</h1>
+			<div id="frameContainer"> 
+				<iframe ng-src="{{trustMusicSrc(musicSrc)}}"></iframe>
+			</div>
+		</section>
+	</section>
+    <section id="weather" class="col-xs-12 col-lg-4 panel">
+		<section class='inner' ng-init="alternate()" ng-controller="weatherController">
+			<h1 style="text-align:center">Weather Forecast</h1>
+			<ul class="container-fluid" ng-show="weather.currently">
+				<li class="weatherList">
+					<ul type='info' class="col-xs-6">
+						<li>{{weather.currently.time | timeFilter}}</li>
+						<li>{{weather.currently.temperature}}</li>
+						<li>{{weather.currently.altTitles[count%3]}} {{weather.currently.alternating[count % 3]}}</li>
+					</ul>
+					<span class="col-xs-5">
+						<img ng-src="{{weather.currently.image[imgCode]}}">
+					</span>
+				</li>
+				<div class="col-sm-6">
+				<h4>Today</h4>
+					<li class="weatherList" ng-repeat="hour in weather.hourly">
+						<ul type='info' class="col-xs-6">
+							<li>{{hour.time | timeFilter}}</li>
+							<li>{{hour.temperature}}</li>
+							<li>{{hour.altTitles[count % 2]}} {{hour.alternating[count % 2]}}</li>
+						</ul>
+						<span class="col-xs-5">
+							<img class='weatherImage' ng-src="{{hour.image[imgCode]}}">
+						</span>
+					</li>
+				</div>
+				<div class="col-sm-6">
+				<h4>This Week</h4>
+					<li class="weatherList" ng-repeat="day in weather.daily">
+						<ul type='info' class="col-xs-6">
+							<li>{{day.date | dowFilter}}</li>
+							<li>{{day.altTitles[count%3][0]}} {{day.alternating[count%3][0]}}</li>
+							<li>{{day.altTitles[count%3][1]}} {{day.alternating[count%3][1]}}</li>
+						</ul>
+							<span class="col-xs-5">
+								<img class='weatherImage' ng-src="{{day.image[imgCode]}}">
+							</span>
+					</li>
+				</div>
+			</ul>
+		</section>
+	</section>
+    <section id="news" class="hidden-xs col-md-12 panel" ng-controller="newsController">
+		<br><br>
+        <marquee><span ng-repeat="temp in news">{{temp.title}} - {{temp.source}} | </span></marquee>
+    </section>
+</body>
+</html>

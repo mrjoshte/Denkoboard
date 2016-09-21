@@ -1,0 +1,70 @@
+______           _        ______                     _ 
+|  _  \         | |       | ___ \                   | |
+| | | |___ _ __ | | _____ | |_/ / ___   __ _ _ __ __| |
+| | | / _ \ '_ \| |/ / _ \| ___ \/ _ \ / _` | '__/ _` |
+| |/ /  __/ | | |   < (_) | |_/ / (_) | (_| | | | (_| |
+|___/ \___|_| |_|_|\_\___/\____/ \___/ \__,_|_|  \__,_|
+
+
+TODO:
+Remove iFrame, find a different way to implement. iFrame takes lots
+of cpu time to render.
+Replace marquee with something else. 
+Monitor CPU Usage to optimize OR amortize.
+Migrate to new Pi. 
+
+ChangeLog::
+**// Put most recent changes on top \\**
+
+Jan 26, 2016
+Changed interal of updates for the News and Weather Feeds.
+Updating both simultaneously will overload the pi and causes crashes.
+Reset intervals to be offset by five minutes.
+
+Jan 1, 2016
+Changed denkoApp.js to have 1% GW chance again
+Changed browser to not get caught on startup
+^^ (options and TryAgain addon for IceWeasel
+Node Server now runs on startup
+
+As of NOW, startup on pi SHOULD:
+Start Node Server
+Start IceWeasel on DenkoBoard
+Reload until page is populated
+???
+Profit!
+
+Otherwise, there should not be much else to do other than install TV on wall
+
+******************************************
+////////////*******************\\\\\\\\\\\\
+*****-----_____GENERAL INFO______-----*****
+
+DENKOBOARD:
+All needed files are in the /denko dir
+
+--TO MAKE CHANGES TO DENKOBOARD, PLEASE MAKE LOCALLY AND PUSH TO PI:
+
+STEPS TO DL AND RUN DENKOBOARD LOCALLY:
+	download the ClientSide, Server side dirs and package.json to your local machine 
+	install npm and node on local machine
+	open up the directory with client/serverside and package.json in CMD or similar CLI
+	run " npm install " to install node packages
+	wait to finish
+	cd in CLI to ServerSide dir
+	run " node denkoServer.js "
+	denkoboard will be running at " localhost:1337 "
+
+STARTUP:
+Startup is handled in the rc.local file
+Includes:
+	-Start Node server
+	-Open Iceweasel in fullscreen mode
+
+THINGS ADDED TO NORMAL INSTALL:
+proftpd -	 FTP client
+unclutter -	 get rid of mouse cursor
+node.js -	 node server
+npm 	-	 package manager
+iceweasel (with TryAgain addon) - web browser
+

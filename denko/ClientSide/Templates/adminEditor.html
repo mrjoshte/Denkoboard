@@ -1,0 +1,132 @@
+<main id="adminEditor">
+    <section class="col-xs-12 col-lg-6" ng-controller="dataEditor" ng-init="init('contacts')">
+        <h2 class="row col-xs-12">{{title}} Editor</h2>
+        <div class="row">
+            <span class="col-xs-3">Title</span>
+            <span class="col-xs-7">Value</span>
+        </div>
+        <ul class="row">
+            <li ng-repeat="dataObject in data track by $index">
+                <input class="col-xs-3" type="text" ng-model="dataObject.title">
+                <input class="col-xs-7" type="text"  ng-model="dataObject.value">
+                <button class="col-xs-2" ng-click="deleteData($index)">Delete</button>
+            </li>
+            <li>
+                <input class="col-xs-3" type="text" ng-model="newData.title">
+                <input class="col-xs-7" type="text" ng-model="newData.value">
+                <button class="col-xs-1" ng-click="clearNewData()">Clear</button>
+                <button class="col-xs-1" ng-click="addNewData(Contact)">Add</button>
+            </li>
+        </ul>
+        <button ng-click="submit()">Submit</button>
+    </section>
+    <section class="col-xs-12 col-lg-6" ng-controller="dataEditor" ng-init="init('announcements')">
+        <h2 class="row col-xs-12">{{title}} Editor</h2>
+        <div class="row">
+            <span class="col-xs-3">Title</span>
+            <span class="col-xs-7">Value</span>
+        </div>
+        <ul class="row">
+            <li ng-repeat="dataObject in data track by $index">
+                <input class="col-xs-3" type="text" ng-model="dataObject.title">
+                <input class="col-xs-7" type="text"  ng-model="dataObject.value">
+                <button class="col-xs-2" ng-click="deleteData($index)">Delete</button>
+            </li>
+            <li>
+                <input class="col-xs-3" type="text" ng-model="newData.title">
+                <input class="col-xs-7" type="text" ng-model="newData.value">
+                <button class="col-xs-1" ng-click="clearNewData()">Clear</button>
+                <button class="col-xs-1" ng-click="addNewData(Announcements)">Add</button>
+            </li>
+        </ul>
+        <button ng-click="submit()">Submit</button>
+    </section>
+	<section class="col-xs-12 col-lg-6" ng-controller="dataEditor" ng-init="init('banner')">
+        <h2 class="row col-xs-12 col-lg-6">{{title}} Editor</h2>
+        <div class="row">
+            <span class="col-xs-11  col-lg-11">Value</span>
+            <span class="col-xs-1 col-lg-1">Displayed</span>
+        </div>
+        <ul class="row">
+            <li ng-repeat="dataObject in data track by $index">
+                <input class="col-xs-9  col-lg-10" type="text"  ng-model="dataObject.value" >
+                <button class="col-xs-2 col-lg-1" ng-click="deleteData($index)">Delete</button>
+				<input class="col-xs-1  col-lg-1" type="radio" name="bannerSelect" value="Banner" ng-model="dataObject.selected" ng-click="updateIndex($index)">
+            </li>
+            <li>
+                <input class="col-xs-9  col-lg-9" type="text" ng-model="newData.value">
+                <button class="col-xs-1  col-lg-1" ng-click="clearNewData()">Clear</button>
+                <button class="col-xs-1  col-lg-1" ng-click="addNewData('Banner')">Add</button>
+            </li>
+        </ul>
+        <button ng-click="submit()">Submit</button>
+    </section>
+	<section class="col-xs-12 col-lg-6" class="" ng-controller="dataEditor">
+	<h2 class="col-xs-12" style="margin-bottom: 30px">Gorilla Weather Editor</h2>
+	<input class="col-xs-5" ng-init="gorillaInit()" ng-model="Gorilla" type="range" value="{{Gorilla}}" min="0" step="1" max="100" />
+		<div class="row">
+            <h3 id="range" class="col-xs-9" style="margin-bottom: 20px">There is a {{Gorilla}}% chance of Gorilla Weather today.</h3>
+		</div>
+			<button ng-click="submitG()" style="margin-bottom: 20px">Submit</button>
+	</section>
+	<section class="col-xs-12 col-lg-6" ng-controller="dataEditor" ng-init="init('credentials')">
+        <h2 class="row col-xs-12">{{title}} Editor</h2>
+        <div class="row">
+            <span class="col-xs-3">Type</span>
+            <span class="col-xs-8">Value</span>
+        </div>
+        <ul class="row">
+            <li>
+                <input class="col-xs-3" type="text" value="Forecast API Key" readonly>
+                <input class="col-xs-9" type="text"  ng-model="data[0].forecastApiKey">
+				<input class="col-xs-3" type="text" value="Weather Latitude" readonly>
+                <input class="col-xs-9" type="text"  ng-model="data[1].latitude">
+				<input class="col-xs-3" type="text" value="Weather Longitude" readonly>
+                <input class="col-xs-9" type="text"  ng-model="data[2].longitude">
+				<input class="col-xs-3" type="text" value="Music Link" readonly>
+                <input class="col-xs-9" type="text"  ng-model="data[3].musicSrc">
+            </li>
+        </ul>
+        <button ng-click="submit()">Submit</button>
+    </section>
+	<section class="col-xs-12 col-lg-6" ng-controller="dataEditor" ng-init="init('feeds')">
+        <h2 class="row col-xs-12">News {{title}} Editor</h2>
+        <div class="row">
+            <span class="col-xs-9">Value</span>
+        </div>
+        <ul class="row">
+            <li ng-repeat="dataObject in data track by $index">
+                <input class="col-xs-10" type="text"  ng-model="dataObject" >
+                <button class="col-xs-2" ng-click="deleteData($index)">Delete</button>
+            </li>
+            <li>
+                <input class="col-xs-10" type="text" ng-model="newData.value">
+                <button class="col-xs-1" ng-click="clearNewData()">Clear</button>
+                <button class="col-xs-1" ng-click="addNewData('Feeds')">Add</button>
+            </li>
+        </ul>
+        <button ng-click="submit()">Submit</button>
+    </section>
+	<section class="col-xs-12 col-lg-6" ng-controller="dataEditor" ng-init="init('userInfo')">
+        <h2 class="row col-xs-12">{{title}} Editor</h2>
+        <div class="row">
+            <span class="col-xs-3">Type</span>
+            <span class="col-xs-8">Value</span>
+        </div>
+        <ul class="row">
+            <li>
+                <input class="col-xs-3" type="text" value="Username" readonly>
+                <input class="col-xs-9" type="text"  ng-model="data[0].username">
+				<input class="col-xs-3" type="text" value="Password" readonly>
+                <input class="col-xs-9" type="password"  ng-model="data[0].password">
+				<input class="col-xs-3" type="text" value="Confirm Password" readonly>
+                <input class="col-xs-9" type="password" ng-model="newPass">
+				<input class="col-xs-3" type="text" value="Security Question" readonly>
+                <input class="col-xs-9" type="text"  ng-model="data[0].securityQuestion">
+				<input class="col-xs-3" type="text" value="Security Answer" readonly>
+                <input class="col-xs-9" type="password"  ng-model="data[0].securityAnswer">
+            </li>
+        </ul>
+        <button ng-click="checkPass()">Submit</button>
+    </section>
+</main>

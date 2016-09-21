@@ -1,0 +1,7 @@
+#!/bin/sh -e
+/DietPi/dietpi/dietpi-services start
+/DietPi/dietpi/dietpi-banner 0
+
+sh '/denko/startDenko.sh'
+sudo unclutter -idle 1 -root
+exit 0

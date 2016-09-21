@@ -1,0 +1,46 @@
+Welcome to DenkoBoard!
+
+In order to view denkoboard a few things need to happen. The raspberry Pi has to be plugged 
+into the wall and connected to the internet. You'll need to set an IP address for the Pi.
+
+After the pi has booted and the PI address is set, you should be able to view denkoboard.
+Go to the address with port 1337. So ex    192.168.220.152:1337
+
+There you will be able to see denkoboard!
+It probably looks pretty blank, so you'll need to visit the admin page to put in settings.
+
+Next, in order to log into the admin page you will put the denkoboard address then /admin.
+ex 192.168.220.152:1337/admin
+
+the default login is 
+
+Username: admin
+Password: admin
+
+Now you see all the settings. The contact editor, announcements, and banner editors are self explanitory
+JUST MAKE SURE YOU PRESS submit after you've made changes to that section. The changes will be put on 
+denkoboard in real time.
+
+The gorilla weather slider has different pictures for the weather icons which are pretty fun. Usually we 
+keep them around 1-5 %
+
+The credentials editor contains a forecast API Key. You can navigate to https://developer.forecast.io/ and click 'register'
+at the top. Then you'll make an account, and at the bottom of the page, they will give you an API key in a text box.
+just copy and paste that into the 'Forecast API Key' section in Credentials Editor.
+
+Then you will have to find the latitutde and the longitude of your Maverick office. You can find this very
+easily via google maps.
+
+Next is the Music Link. All you have to put in there is the link you would use to view mopify music on your local computer
+something like http://192.168.220.144:6680/mopify/
+
+For News Feeds Editor I cannot guarentee any RSS feed will work, but it won't break the program if the one 
+entered does not work. It will simply not display that feed. You can find an RSS feed pretty easily just by looking up
+a news source you want, and then a news topic to find the rss feed for it. We have prepopulated it with a few Retuers links.
+
+Last is the User Credentials Editor. You will want to change the username and password from admin after your initial login,
+and you can also change the security question if you would like. However, you MUST have a security question and answer.
+
+-Josh Engelhardt, Ames Maverick
+
+This was created by Nick Wilson with Chris Daly, Stefan Kraus, and myself as contributors.
